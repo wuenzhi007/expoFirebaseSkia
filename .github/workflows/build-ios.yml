@@ -20,4 +20,4 @@ jobs:
     - name: Install dependencies
       run: npm install
     - name: Build iOS app for simulator using EAS
-      run: npx eas build --platform ios --profile development --non-interactive
+      run: npx eas build --platform ios --profile preview --non-interactive

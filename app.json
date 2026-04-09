@@ -26,7 +26,8 @@
           "fetch"
         ],
         "NSUserTrackingUsageDescription": "用于分析和推送通知。",
-        "FirebaseAppDelegateProxyEnabled": true
+        "FirebaseAppDelegateProxyEnabled": true,
+        "ITSAppUsesNonExemptEncryption": false
       }
     },
     "android": {

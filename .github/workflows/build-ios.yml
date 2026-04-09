@@ -25,15 +25,10 @@ jobs:
         ruby-version: '3.2'
     - name: Install CocoaPods
       run: gem install cocoapods
-    - name: Prebuild iOS
-      run: npx expo prebuild --platform ios --clean
-    - name: Clean CocoaPods cache
+    - name: Install CocoaPods dependencies
       run: |
         cd ios
-        rm -rf Pods
-        rm -f Podfile.lock
-    - name: Install CocoaPods dependencies
-      run: cd ios && pod install
+        pod install --repo-update
     - name: Build iOS app
       run: |
         cd ios

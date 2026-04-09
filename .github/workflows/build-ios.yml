@@ -19,9 +19,5 @@ jobs:
         node-version: '18'
     - name: Install dependencies
       run: npm install
-    - name: Validate Expo auth
-      run: npx eas whoami
-    - name: Link project to Expo account
-      run: npx eas build:list 2>/dev/null || echo "Project not linked, will link automatically"
     - name: Build iOS IPA locally on GitHub macOS runner
       run: npx eas build --platform ios --profile production --local --non-interactive

@@ -7,23 +7,7 @@
       "developmentClient": true,
       "distribution": "internal"
     },
-    "preview": {
-      "ios": {
-        "workflow": "managed"
-      },
-      "android": {
-        "workflow": "managed"
-      }
-    },
-    "production": {
-      "ios": {
-        "workflow": "managed",
-        "buildType": "release"
-      },
-      "android": {
-        "workflow": "managed",
-        "buildType": "app-bundle"
-      }
-    }
+    "preview": {},
+    "production": {}
   }
 }

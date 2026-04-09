@@ -1,10 +1,11 @@
-name: Build iOS Development
+name: Build iOS IPA
 
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   build-ios:
@@ -15,15 +16,11 @@ jobs:
       with:
         node-version: '18'
         cache: 'npm'
-    - name: Setup Expo CLI
-      run: npm install -g @expo/cli
+    - name: Install EAS CLI
+      run: npm install -g @expo/eas-cli
     - name: Install dependencies
       run: npm ci
-    - name: Prebuild iOS
-      run: npx expo prebuild --platform ios --no-install
-    - name: Install CocoaPods
-      run: cd ios && pod install
-    - name: Build iOS app
-      run: |
-        cd ios
-        xcodebuild -workspace expoFirebaseSkia.xcworkspace -scheme expoFirebaseSkia -configuration Debug -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' build
+    - name: Login to EAS
+      run: eas login --access-token ${{ secrets.EXPO_TOKEN }}
+    - name: Build iOS IPA locally
+      run: eas build --platform ios --profile production --local --non-interactive

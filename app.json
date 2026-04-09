@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "expoFirebaseSkia",
+    "slug": "expoFirebaseSkia",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wugongxing.expofirebase",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "remote-notification",
+          "fetch"
+        ],
+        "NSUserTrackingUsageDescription": "用于分析和推送通知。",
+        "FirebaseAppDelegateProxyEnabled": true
+      }
+    },
+    "android": {
+      "package": "com.wugongxing.expofirebase",
+      "googleServicesFile": "./google-services.json",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": [
+        "INTERNET",
+        "NOTIFICATIONS"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

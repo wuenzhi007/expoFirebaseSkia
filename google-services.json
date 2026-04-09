@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "123456789012",
+    "firebase_url": "https://example.firebaseio.com",
+    "project_id": "example-project-id",
+    "storage_bucket": "example-project-id.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:123456789012:android:abcdef123456",
+        "android_client_info": {
+          "package_name": "com.wugongxing.expofirebase"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyEXAMPLEKEY1234567890"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

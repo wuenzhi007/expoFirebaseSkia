@@ -9,9 +9,9 @@ on:
 
 jobs:
   build-ios:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     env:
-      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
+      EAS_TOKEN: ${{ secrets.EAS_TOKEN }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -19,5 +19,7 @@ jobs:
         node-version: '18'
     - name: Install dependencies
       run: npm install
-    - name: Build iOS IPA locally
-      run: npx eas build --platform ios --profile production --local --non-interactive
+    - name: Login to EAS
+      run: npx eas login --token $EAS_TOKEN
+    - name: Build iOS IPA on EAS
+      run: npx eas build --platform ios --profile production --non-interactive

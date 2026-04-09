@@ -45,7 +45,10 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
+      "eas": {
+        "projectId": "65674274-b3a1-44eb-853e-9050abb36614"
+      }
     },
-    "owner": "wugongxing"
+    "owner": "wuenzhi"
   }
 }

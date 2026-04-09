@@ -10,6 +10,8 @@ on:
 jobs:
   build-ios:
     runs-on: macos-latest
+    env:
+      EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
     steps:
     - uses: actions/checkout@v4
     - uses: actions/setup-node@v4
@@ -17,5 +19,7 @@ jobs:
         node-version: '18'
     - name: Install dependencies
       run: npm install
+    - name: Login to Expo for EAS
+      run: npx eas login --token $EXPO_TOKEN
     - name: Build iOS IPA locally on GitHub macOS runner
       run: npx eas build --platform ios --profile production --local --non-interactive

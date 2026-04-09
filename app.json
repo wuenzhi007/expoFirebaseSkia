@@ -45,9 +45,6 @@
       "favicon": "./assets/favicon.png"
     },
     "extra": {
-      "eas": {
-        "projectId": "b057e516-be7e-4761-9f58-645d26f33d93"
-      }
     },
     "owner": "wugongxing"
   }

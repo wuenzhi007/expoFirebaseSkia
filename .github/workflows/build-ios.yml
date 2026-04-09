@@ -27,6 +27,11 @@ jobs:
       run: gem install cocoapods
     - name: Prebuild iOS
       run: npx expo prebuild --platform ios --clean
+    - name: Clean CocoaPods cache
+      run: |
+        cd ios
+        rm -rf Pods
+        rm -f Podfile.lock
     - name: Install CocoaPods dependencies
       run: cd ios && pod install
     - name: Build iOS app

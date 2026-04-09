@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Button, Alert } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Canvas, Circle } from '@shopify/react-native-skia';
+import { Canvas, Circle, useLoop, useComputedValue } from '@shopify/react-native-skia';
 import Animated, { useSharedValue, useAnimatedStyle, withRepeat, withTiming, Easing } from 'react-native-reanimated';
 import analytics from '@react-native-firebase/analytics';
 import messaging from '@react-native-firebase/messaging';
@@ -12,6 +12,10 @@ export default function App() {
   const [permission, setPermission] = useState('未请求');
   const [configValue, setConfigValue] = useState('正在加载...');
   const progress = useSharedValue(0);
+
+  // Skia 动画：脉冲圆
+  const loop = useLoop({ duration: 2000 });
+  const radius = useComputedValue(() => 50 + 30 * Math.sin(loop.current * 2 * Math.PI), [loop]);
 
   useEffect(() => {
     progress.value = withRepeat(
@@ -57,9 +61,9 @@ export default function App() {
   const loadRemoteConfig = async () => {
     try {
       await remoteConfig().setConfigSettings({ minimumFetchIntervalMillis: 3600000 });
-      await remoteConfig().setDefaults({ welcome_message: '默认远程配置消息' });
+      await remoteConfig().setDefaults({ app_title: '默认应用标题' });
       await remoteConfig().fetchAndActivate();
-      const value = remoteConfig().getValue('welcome_message').asString();
+      const value = remoteConfig().getValue('app_title').asString();
       setConfigValue(value || '远程配置内容为空');
     } catch (error) {
       setConfigValue(`获取远程配置失败: ${error.message}`);
@@ -68,12 +72,12 @@ export default function App() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Expo + Skia + Reanimated + Firebase 示例</Text>
+      <Text style={styles.title}>{configValue}</Text>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Skia 画布</Text>
+        <Text style={styles.cardTitle}>最简单的 Skia 动画</Text>
         <Canvas style={styles.canvas}>
-          <Circle cx={110} cy={110} r={90} color="#4f46e5" />
+          <Circle cx={110} cy={110} r={radius} color="#4f46e5" />
         </Canvas>
       </View>
 
@@ -97,8 +101,8 @@ export default function App() {
       </View>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitle}>Remote Config</Text>
-        <Text style={styles.info}>{configValue}</Text>
+        <Text style={styles.cardTitle}>Firebase Remote Config</Text>
+        <Text style={styles.info}>参数 app_title: {configValue}</Text>
         <Button title="刷新 Remote Config" onPress={loadRemoteConfig} />
       </View>
 

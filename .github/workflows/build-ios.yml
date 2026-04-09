@@ -19,5 +19,17 @@ jobs:
         node-version: '18'
     - name: Install dependencies
       run: npm install
-    - name: Build iOS app for simulator using EAS
-      run: npx eas build --platform ios --profile preview --non-interactive
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.2'
+    - name: Install CocoaPods
+      run: gem install cocoapods
+    - name: Prebuild iOS
+      run: npx expo prebuild --platform ios --clean
+    - name: Install CocoaPods dependencies
+      run: cd ios && pod install
+    - name: Build iOS app
+      run: |
+        cd ios
+        xcodebuild -workspace expoFirebaseSkia.xcworkspace -scheme expoFirebaseSkia -configuration Release -sdk iphoneos -archivePath build/expoFirebaseSkia.xcarchive archive

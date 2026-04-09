@@ -8,8 +8,8 @@ import messaging from '@react-native-firebase/messaging';
 import remoteConfig from '@react-native-firebase/remote-config';
 
 export default function App() {
-  const [token, setToken] = useState('正在获 取...');
-  const [permission, setPermission] = useState('未请求');
+  const [token, setToken] = useState('正在获   取...');
+  const [permission, setPermission] = useState('未 请求');
   const [configValue, setConfigValue] = useState('正在加载...');
   const progress = useSharedValue(0);
 

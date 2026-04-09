@@ -19,5 +19,5 @@ jobs:
         node-version: '18'
     - name: Install dependencies
       run: npm install
-    - name: Build iOS app for simulator
-      run: npx eas build --platform ios --profile development --simulator --local --non-interactive
+    - name: Build iOS app for simulator using EAS
+      run: npx eas build --platform ios --profile development --non-interactive

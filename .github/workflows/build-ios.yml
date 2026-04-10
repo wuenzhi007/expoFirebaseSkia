@@ -19,6 +19,8 @@ jobs:
         node-version: '18'
     - name: Install dependencies
       run: npm install
+    - name: Install expo-dev-client
+      run: npm install expo-dev-client
     - name: Install EAS CLI
       run: npm install -g eas-cli@latest
     - name: Build iOS Simulator app with EAS

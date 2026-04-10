@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>API_KEY</key>
+  <string>AIzaSyEXAMPLEKEY1234567890</string>
+  <key>PROJECT_ID</key>
+  <string>example-project-id</string>
+  <key>GCM_SENDER_ID</key>
+  <string>123456789012</string>
+  <key>GOOGLE_APP_ID</key>
+  <string>1:123456789012:ios:abcdef123456</string>
+  <key>BUNDLE_ID</key>
+  <string>com.wugongxing.expofirebase</string>
+  <key>CLIENT_ID</key>
+  <string>123456789012-abcdef.apps.googleusercontent.com</string>
+  <key>DATABASE_URL</key>
+  <string>https://example.firebaseio.com</string>
+  <key>STORAGE_BUCKET</key>
+  <string>example-project-id.appspot.com</string>
+</dict>
+</plist>

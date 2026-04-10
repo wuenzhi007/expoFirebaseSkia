@@ -45,6 +45,29 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "minSdkVersion": 24,
+            "permissions": [
+              "CAMERA",
+              "ACCESS_FINE_LOCATION",
+              "ACCESS_COARSE_LOCATION",
+              "INTERNET",
+              "SYSTEM_ALERT_WINDOW",
+              "VIBRATE"
+            ]
+          },
+          "ios": {
+            "deploymentTarget": "15.1"
+          }
+        }
+      ]
+    ],
     "extra": {
       "eas": {
         "projectId": "65674274-b3a1-44eb-853e-9050abb36614"
